@@ -32,6 +32,23 @@ export function CodeEditor() {
         new Set([editorRef]),
         yProvider.awareness as Awareness
       );
+
+      yText.observe((event) => {
+        console.log(
+          "This store has everything",
+          yProvider?.awareness?.doc?.store?.clients
+        );
+
+        event.changes.delta.forEach((op) => {
+          const userId = event.transaction.doc.clientID;
+
+          if (op.insert) {
+            console.log(`User: ${userId}, Insert operation: ${op.insert}`);
+          } else if (op.delete) {
+            console.log(`User ${userId}, Delete operation: ${op.delete}`);
+          }
+        });
+      });
     }
 
     return () => {

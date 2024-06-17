@@ -7,7 +7,7 @@ import {
 } from "@liveblocks/react/suspense";
 import { CodeEditor } from "./CodeEditor";
 import styled from "styled-components";
-import { Editor } from "./Editor";
+// import { Editor } from "./Editor";
 
 const AppContainer = styled.div``;
 const LiveblocksContainer = styled.div``;
@@ -15,6 +15,7 @@ const LiveblocksContainer = styled.div``;
 export default function App() {
   const liveBlockKey = process.env.REACT_APP_LIVEBLOCKS_PROD_KEY || "";
   const roomId = "my-room";
+
   return (
     <AppContainer>
       <h1>Room ID: {roomId}</h1>
