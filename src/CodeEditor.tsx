@@ -40,12 +40,12 @@ export function CodeEditor() {
         );
 
         event.changes.delta.forEach((op) => {
-          const userId = event.transaction.doc.clientID;
+          // const userId = event.transaction.doc.clientID;
 
           if (op.insert) {
-            console.log(`User: ${userId}, Insert operation: ${op.insert}`);
+            console.log(`Insert operation: ${op.insert}`);
           } else if (op.delete) {
-            console.log(`User ${userId}, Delete operation: ${op.delete}`);
+            console.log(`Delete operation: ${op.delete}`);
           }
         });
       });
