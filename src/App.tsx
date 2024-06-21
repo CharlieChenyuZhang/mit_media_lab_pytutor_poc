@@ -11,6 +11,27 @@ import mitMediaLabLogo from "./assets/images/mit-media-lab-logo.png";
 // import { Editor } from "./Editor";
 
 const Title = styled.h1``;
+const MeetingButton = styled.button`
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    background-color: #004085;
+    transform: scale(0.95);
+  }
+`;
 const SubTitle = styled.p`
   margin: 20px 60px;
 `;
@@ -46,6 +67,16 @@ export default function App() {
       </SubTitle>
 
       <p>Room ID: {roomId}</p>
+      <MeetingButton
+        onClick={() =>
+          window.open(
+            "https://video-app-4917-2440-dev.twil.io?passcode=46594649172440",
+            "_blank"
+          )
+        }
+      >
+        Join/Start Meeting
+      </MeetingButton>
       <LiveBlockContainer>
         <LiveblocksProvider publicApiKey={liveBlockKey}>
           <RoomProvider id={roomId} initialPresence={{}}>
