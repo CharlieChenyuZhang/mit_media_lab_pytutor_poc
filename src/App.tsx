@@ -8,7 +8,8 @@ import {
 import { CodeEditor } from "./CodeEditor";
 import styled from "styled-components";
 import mitMediaLabLogo from "./assets/images/mit-media-lab-logo.png";
-// import { Editor } from "./Editor";
+import { Editor } from "./Editor";
+import Whiteboard from "./Whiteboard";
 
 const Title = styled.h1``;
 const MeetingButton = styled.button`
@@ -20,7 +21,9 @@ const MeetingButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
 
   &:hover {
     background-color: #0056b3;
@@ -51,7 +54,7 @@ const Logo = styled.img`
 `;
 
 const LiveBlockContainer = styled.div`
-  width: 100%;
+  width: 80%;
 `;
 
 export default function App() {
@@ -80,16 +83,26 @@ export default function App() {
       <LiveBlockContainer>
         <LiveblocksProvider publicApiKey={liveBlockKey}>
           <RoomProvider id={roomId} initialPresence={{}}>
-            {/* code editor */}
+            <Title>Code editor</Title>
             <ClientSideSuspense fallback={<div>Loading…</div>}>
               {() => <CodeEditor />}
             </ClientSideSuspense>
 
-            {/* text editor */}
-            {/* <ClientSideSuspense fallback={<div>Loading…</div>}>
-                {() => <Editor />}
-              </ClientSideSuspense> */}
+            <Title>Rich text editor</Title>
+            <ClientSideSuspense fallback={<div>Loading…</div>}>
+              {() => <Editor />}
+            </ClientSideSuspense>
           </RoomProvider>
+
+          <Title>Collaborative online whiteboard</Title>
+          <Whiteboard />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
         </LiveblocksProvider>
       </LiveBlockContainer>
     </Container>

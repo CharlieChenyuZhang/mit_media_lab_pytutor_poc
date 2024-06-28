@@ -65,7 +65,7 @@ export function CodeEditor() {
   return (
     <Editor
       onMount={handleOnMount}
-      height="100vh"
+      height="200px"
       width="100hw"
       theme="vs-light"
       defaultLanguage="python"
