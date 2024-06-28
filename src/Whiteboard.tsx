@@ -422,6 +422,37 @@ function Canvas() {
     ]
   );
 
+  const downloadSvgAsPng = () => {
+    const svgElement = canvasRef.current;
+    if (!svgElement) return;
+
+    // Create a canvas
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const serializer = new XMLSerializer();
+    const svgStr = serializer.serializeToString(svgElement);
+
+    // Set width and height
+    canvas.width = svgElement.clientWidth;
+    canvas.height = svgElement.clientHeight;
+
+    const img = new Image();
+    img.src =
+      "data:image/svg+xml;base64," +
+      window.btoa(unescape(encodeURIComponent(svgStr)));
+    img.onload = () => {
+      // Draw the image onto the canvas
+      ctx.drawImage(img, 0, 0);
+      const canvasUrl = canvas.toDataURL("image/png");
+
+      // Create a download link and click it
+      const downloadLink = document.createElement("a");
+      downloadLink.download = "whiteboard-screenshot.png";
+      downloadLink.href = canvasUrl;
+      downloadLink.click();
+    };
+  };
+
   return (
     <>
       <div className={styles.canvas}>
@@ -486,6 +517,7 @@ function Canvas() {
         redo={history.redo}
         canUndo={canUndo}
         canRedo={canRedo}
+        download={downloadSvgAsPng}
       />
     </>
   );

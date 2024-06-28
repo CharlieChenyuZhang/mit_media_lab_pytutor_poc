@@ -3,6 +3,7 @@ import PencilButton from "./PencilButton";
 import RectangleButton from "./RectangleButton";
 import EllipseButton from "./EllipseButton";
 import UndoButton from "./UndoButton";
+import DownloadButton from "./DownloadButton";
 import RedoButton from "./RedoButton";
 import SelectionButton from "./SelectionButton";
 import { CanvasMode, LayerType, CanvasState } from "../../types";
@@ -13,6 +14,7 @@ type Props = {
   setCanvasState: (newState: CanvasState) => void;
   undo: () => void;
   redo: () => void;
+  download: () => void;
   canUndo: boolean;
   canRedo: boolean;
 };
@@ -24,6 +26,7 @@ export default function ToolsBar({
   redo,
   canUndo,
   canRedo,
+  download,
 }: Props) {
   return (
     <div className={styles.tools_panel_container}>
@@ -72,6 +75,10 @@ export default function ToolsBar({
         <div className={styles.tools_panel_section}>
           <UndoButton onClick={undo} disabled={!canUndo} />
           <RedoButton onClick={redo} disabled={!canRedo} />
+        </div>
+        <div className={styles.seperator}></div>
+        <div className={styles.tools_panel_section}>
+          <DownloadButton onClick={download} />
         </div>
       </div>
     </div>
