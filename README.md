@@ -1,4 +1,4 @@
-# MIT Media Lab PyTutor PoC
+# MIT Media Lab PyTutor LiveBlocks PoC
 includes:
 * collaborative code editor
 * collaborative rich text editor
